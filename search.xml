@@ -11,4 +11,24 @@
         <tag>博客祭</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vector相关总结</title>
+    <url>/2022/07/08/Vector%E6%9C%89%E5%85%B3%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="vector简介"><a href="#vector简介" class="headerlink" title="vector简介"></a>vector简介</h2><p>可以简单的认为，vector是一个能够存放任意类型的动态数组。</p>
+<h2 id="vector相关内容"><a href="#vector相关内容" class="headerlink" title="vector相关内容"></a>vector相关内容</h2><h3 id="vector有关头文件"><a href="#vector有关头文件" class="headerlink" title="vector有关头文件"></a>vector有关头文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;vector&gt;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="vector定义与初始化"><a href="#vector定义与初始化" class="headerlink" title="vector定义与初始化"></a>vector定义与初始化</h3><p>vector初始化时int类型数据会默认初始化为0，string类型则会默认为空字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; v;</span><br><span class="line">vector&lt;string&gt; v;</span><br><span class="line">vector&lt;vector&lt;int&gt;&gt;;  //相当于二维数组int a[n][n];</span><br><span class="line">vector&lt;int&gt;v = &#123; 1,2,3,4,5 &#125;; //列表初始化,其他类型数据类似</span><br><span class="line">vector&lt;int&gt;v(5, -1); //初始化为-1,-1,-1,-1,-1。第一个参数是数目，第二个参数是要初始化的值</span><br><span class="line">vector&lt;int&gt;v(10); //默认初始化为0</span><br></pre></td></tr></table></figure>
+<h3 id="vector相关操作"><a href="#vector相关操作" class="headerlink" title="vector相关操作"></a>vector相关操作</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v.push_back(XX)在vector尾部添加一个数据。</span><br><span class="line">我们可以像访问数组一样访问v[i]，下标从0开始，但是需要注意的是只能对已经加入的元素进行访问与更改，如果要加入新的元素只能通过上面说的push_back函数。</span><br><span class="line">v.size()可以用来查询vector的大小。</span><br><span class="line">v.clear()用于清空vector。</span><br><span class="line">v.insert(v.begin()+1,a)在第i+1个元素前插入元素a。</span><br><span class="line">v.earse(v.begin()+i,v.end()+j)删除区间[i,j-1],区间从0开始。</span><br><span class="line">v.erase(v.begin()+i)删除第i+1个元素。</span><br><span class="line">reverse(vec.begin(),vec.end())将元素翻转，需要头文件#include&lt;algorithm&gt;。</span><br><span class="line">v.find(v.begin(),v.end(),x)在vector中查找x</span><br><span class="line">if ( v.find(v.begin(),v.end(),x) == v.end( ) ) //没找到</span><br><span class="line">else //找到</span><br></pre></td></tr></table></figure>
+<h3 id="对vector进行sort排序"><a href="#对vector进行sort排序" class="headerlink" title="对vector进行sort排序"></a>对vector进行sort排序</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sort(v.begin(),v.end()) (默认是按升序排列,即从小到大)。</span><br><span class="line">如果要改变顺序，需要自行编写cmp函数</span><br><span class="line">bool cmp(const int &amp;a,const int &amp;b)&#123;</span><br><span class="line">    return a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line">调用sort(v.begin(),v.end(),cmp)将按降序排列。</span><br></pre></td></tr></table></figure>
+
+<h3 id="vector使用lower-bound"><a href="#vector使用lower-bound" class="headerlink" title="vector使用lower_bound"></a>vector使用lower_bound</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">vector&lt;int&gt; v;  </span><br><span class="line">int main()  &#123;  </span><br><span class="line">    for (int i = 1; i &lt; 4; i++)  </span><br><span class="line">        v.push_back(i);//注意此时v中的元素本身就是有序的  </span><br><span class="line">    int pos = lower_bound(v.begin(), v.end(), 3)-v.begin();  </span><br><span class="line">    cout &lt;&lt; pos&lt;&lt; endl;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>vector</tag>
+        <tag>c++</tag>
+      </tags>
+  </entry>
 </search>
